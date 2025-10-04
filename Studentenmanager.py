@@ -1,6 +1,6 @@
+
 students = []
 
-# Main program loop — keeps running until user chooses to quit
 while True:
     # Display the menu
     print("\nWelcome to Student Manager")
@@ -24,17 +24,16 @@ while True:
             student = {"name": name, "age": age, "grade": grade}
             # Save it to the students list
             students.append(student)
-            print("Student added:", student)
+            print("✅ Student added:", student)
         except ValueError:
-            print("Error: Age must be an integer and grade must be a number.")
+            print("❌ Error: Age must be an integer and grade must be a number.")
 
     # Option 2: View all students
     elif choice == "2":
         if len(students) == 0:
             print("No students added yet.")
         else:
-            print("All students:")
-            # Loop through each student (s = one student dictionary)
+            print("\nAll students:")
             for s in students:
                 print(f"- Name: {s['name']}, Age: {s['age']}, Grade: {s['grade']}")
 
@@ -43,20 +42,18 @@ while True:
         search_name = input("Enter student name to search: ")
         found = False
         for s in students:
-            # Compare names case-insensitively (e.g., "alice" matches "Alice")
             if s["name"].lower() == search_name.lower():
                 print("Student found:", s)
                 found = True
-                break  # Stop searching once found
+                break
         if not found:
             print("Student not found.")
 
-    # Option 4: Show statistics (max, min, average for age and grade)
+    # Option 4: Show statistics
     elif choice == "4":
         if len(students) == 0:
             print("No students to calculate statistics.")
         else:
-            # Extract all ages and grades into separate lists
             ages = [s["age"] for s in students]
             grades = [s["grade"] for s in students]
 
@@ -74,6 +71,7 @@ while True:
             num1 = float(input("Enter first number: "))
             num2 = float(input("Enter second number: "))
             op = input("Enter operator (+, -, *, /): ")
+
             if op == "+":
                 print("Result:", num1 + num2)
             elif op == "-":
@@ -92,8 +90,8 @@ while True:
 
     # Option 6: Quit the program
     elif choice == "6":
-        print("Goodbye!")
-        break  # Exit the loop and end the program
+        print("Goodbye! 👋")
+        break
 
     # Handle invalid menu choices
     else:
