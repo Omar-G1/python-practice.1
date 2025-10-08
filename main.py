@@ -1,6 +1,9 @@
 from students_manager import StudentManager
+import logging
 
 sm = StudentManager()
+
+logging.info("Application started.")
 
 while True:
     try:
@@ -33,11 +36,14 @@ while True:
             print(f"Calculator Result: {result}")
         elif choice == '6':
             print("Exiting Student Manager.")
+            logging.info("Application finished.")
             break
         else:
             print("Invalid choice. Please try again.")
     except ValueError:
+        logging.warning("Invalid input: Non-numeric value entered for grade or age.")
         print("Invalid input. Please enter numeric values for grade and age.")
     except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}", exc_info=True)
         print(f"⚠️ Unexpected error: {e}")
 
